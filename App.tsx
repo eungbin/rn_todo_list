@@ -21,6 +21,8 @@ import {
   Colors,
 } from 'react-native/Libraries/NewAppScreen';
 
+import Title from './components/Title';
+
 function App(): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
 
@@ -39,7 +41,7 @@ function App(): React.JSX.Element {
       <View style={{ backgroundColor: color, width: '33%', height:50 }}>
         {children}
       </View>
-    )
+    );
   }
 
   return (
@@ -51,9 +53,12 @@ function App(): React.JSX.Element {
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
         style={backgroundStyle}>
+        <Title title={'TO-DO List'} />
         <View
           style={{
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
+            display: 'flex', flexWrap: 'wrap',
+            flexDirection: 'row'
         }}>
           <Box color={'red'} />
           <Box color={'blue'} />
