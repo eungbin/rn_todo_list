@@ -22,6 +22,7 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 
 import Title from './components/Title';
+import Input from './components/Input';
 
 function App(): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
@@ -54,38 +55,19 @@ function App(): React.JSX.Element {
         contentInsetAdjustmentBehavior="automatic"
         style={backgroundStyle}>
         <Title title={'TO-DO List'} />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-            display: 'flex', flexWrap: 'wrap',
-            flexDirection: 'row'
-        }}>
-          <Box color={'red'} />
-          <Box color={'blue'} />
-          <Box color={'red'} />
-        </View>
+        <Input />
+        <ScrollView style={styles.taskList}>
+          
+        </ScrollView>
       </ScrollView>
     </SafeAreaView>
   );
 }
 
-// const styles = StyleSheet.create({
-//   sectionContainer: {
-//     marginTop: 32,
-//     paddingHorizontal: 24,
-//   },
-//   sectionTitle: {
-//     fontSize: 24,
-//     fontWeight: '600',
-//   },
-//   sectionDescription: {
-//     marginTop: 8,
-//     fontSize: 18,
-//     fontWeight: '400',
-//   },
-//   highlight: {
-//     fontWeight: '700',
-//   },
-// });
+const styles = StyleSheet.create({
+  taskList: {
+    
+  }
+});
 
 export default App;
