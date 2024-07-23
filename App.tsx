@@ -23,6 +23,7 @@ import {
 
 import Title from './components/Title';
 import Input from './components/Input';
+import Task from './components/Task';
 
 function App(): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
@@ -57,7 +58,8 @@ function App(): React.JSX.Element {
         <Title title={'TO-DO List'} />
         <Input />
         <ScrollView style={styles.taskList}>
-          
+          <Task task='test' />
+          <Task task='test' />
         </ScrollView>
       </ScrollView>
     </SafeAreaView>
