@@ -5,7 +5,7 @@
  * @format
  */
 
-import React from 'react';
+import React, { useState } from 'react';
 import type {PropsWithChildren} from 'react';
 import {
   SafeAreaView,
@@ -25,6 +25,8 @@ import Title from './components/Title';
 import Input from './components/Input';
 import Task from './components/Task';
 
+type TaskType = string;
+
 function App(): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
 
@@ -34,17 +36,7 @@ function App(): React.JSX.Element {
     padding: 20
   };
 
-  type BoxProps = PropsWithChildren<{
-    color: string;
-  }>;
-
-  function Box({children, color}: BoxProps): React.JSX.Element {
-    return (
-      <View style={{ backgroundColor: color, width: '33%', height:50 }}>
-        {children}
-      </View>
-    );
-  }
+  const [tasks, setTasks] = useState<TaskType[] | []>([]);
 
   return (
     <SafeAreaView style={backgroundStyle}>
@@ -58,8 +50,9 @@ function App(): React.JSX.Element {
         <Title title={'TO-DO List'} />
         <Input />
         <ScrollView style={styles.taskList}>
-          <Task task='test' />
-          <Task task='test' />
+          {tasks.length > 0 ? tasks.map((v, idx) => (
+            <Task task={v} key={idx} />
+          )) : null}
         </ScrollView>
       </ScrollView>
     </SafeAreaView>
