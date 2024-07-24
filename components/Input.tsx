@@ -1,9 +1,16 @@
 import React from 'react';
 import { StyleSheet, TextInput, Dimensions } from 'react-native';
 
-export default function Input(): React.JSX.Element {
+interface IInput {
+  onChangeText: any
+  value: string
+  onSubmitEditing: any
+}
+
+export default function Input({ onChangeText, value, onSubmitEditing }: IInput): React.JSX.Element {
   return (
-    <TextInput style={styles.input} placeholder='+ Add a Task' maxLength={50} />
+    <TextInput onChangeText={(value) => onChangeText(value)} value={value} onSubmitEditing={onSubmitEditing}
+     style={styles.input} placeholder='+ Add a Task' maxLength={50} />
   );
 }
 

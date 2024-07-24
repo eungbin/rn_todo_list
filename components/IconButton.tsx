@@ -1,13 +1,17 @@
 import React from 'react';
 import { StyleSheet, TouchableOpacity } from 'react-native';
 
-type Image = {
-  image: React.JSX.Element
+interface IImage {
+  image: React.JSX.Element;
+  onPressOut?: any;
+  index?: number;
 }
 
-export default function IconButton({ image }: Image) {
+export default function IconButton({ image, onPressOut, index }: IImage) {
+  const _onPressOut = () => { onPressOut(index); }
+
   return (
-    <TouchableOpacity style={styles.iconbutton}>
+    <TouchableOpacity style={styles.iconbutton} onPressOut={_onPressOut}>
       {image}
     </TouchableOpacity>
   );
