@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import IconButton from './IconButton';
 import { CheckBoxBlankImg, CheckBoxImg, EditImg, DeleteImg } from '../images/Images';
+import Input from './Input';
 
 type TaskType = {
   text: string;
@@ -16,17 +17,23 @@ interface ITask {
 }
 
 export default function Task({ task, deleteTask, index, updateTaskStatus }: ITask) {
+  const [isEditing, setIsEditing] = useState<boolean>(false);
+
   return (
     <View style={styles.taskContainer}>
-      <View style={styles.taskInnerLeftContainer}>
-        {task.completed ? <IconButton image={CheckBoxImg} onPressOut={updateTaskStatus} index={index} /> :
-        <IconButton image={CheckBoxBlankImg} onPressOut={updateTaskStatus} index={index} />}
-        <Text style={task.completed ? styles.completed : styles.taskText}>{task.text}</Text>
-      </View>
-      <View style={styles.taskInnerRightContainer}>
-        <IconButton image={EditImg} />
-        <IconButton image={DeleteImg} onPressOut={deleteTask} index={index} />
-      </View>
+      { isEditing ? <Input /> :
+        <>
+          <View style={styles.taskInnerLeftContainer}>
+            {task.completed ? <IconButton image={CheckBoxImg} onPressOut={updateTaskStatus} index={index} /> :
+            <IconButton image={CheckBoxBlankImg} onPressOut={updateTaskStatus} index={index} />}
+            <Text style={task.completed ? styles.completed : styles.taskText}>{task.text}</Text>
+          </View>
+          <View style={styles.taskInnerRightContainer}>
+            <IconButton image={EditImg} />
+            <IconButton image={DeleteImg} onPressOut={deleteTask} index={index} />
+          </View>
+        </>
+      }
     </View>
   );
 }

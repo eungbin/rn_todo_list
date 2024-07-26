@@ -2,9 +2,9 @@ import React from 'react';
 import { StyleSheet, TextInput, Dimensions } from 'react-native';
 
 interface IInput {
-  onChangeText: any
-  value: string
-  onSubmitEditing: any
+  onChangeText?: any
+  value?: string
+  onSubmitEditing?: any
 }
 
 export default function Input({ onChangeText, value, onSubmitEditing }: IInput): React.JSX.Element {
